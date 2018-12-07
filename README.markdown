@@ -14,13 +14,16 @@ If you're serious about Core ML, [you need this book](http://leanpub.com/coreml-
 
 Included in this source code repo is the following:
 
-- **CheckInputImage:** Demo app for iOS that shows how to use a very basic image-to-image model to verify how Vision and the neural network preprocessing options modify the input image.
+**CheckInputImage:** Demo app for iOS that shows how to use a very basic image-to-image model to verify how Vision and the neural network preprocessing options modify the input image.
 
-- Scripts/
-    - **convert_multiarrays_to_floats.py:** Changes the data type of any MultiArray inputs and outputs from `DOUBLE` to `FLOAT32`.
-    - **convert_to_float16.py:** Changes the weights of the model from 32-bit to 16-bit floating point, cutting the model size in half.
-    - **deeplab.py:** Demonstration of how to clean up a model by renaming inputs and outputs, removing unnecessary layers, inserting new layers, etc.
-    - **helpers.py:** Useful utility functions for model surgery.
-    - **quantize.py:** For quantizing and dequantizing models.
+**NeuralNetworkBuilder:** Demo of how to write your own Core ML converter. Includes the trained Caffe model.
+
+Scripts:
+
+- **convert_multiarrays_to_floats.py:** Changes the data type of any MultiArray inputs and outputs from `DOUBLE` to `FLOAT32`.
+- **convert_to_float16.py:** Changes the weights of the model from 32-bit to 16-bit floating point, cutting the model size in half.
+- **deeplab.py:** Demonstration of how to clean up a model by renaming inputs and outputs, removing unnecessary layers, inserting new layers, etc.
+- **helpers.py:** Useful utility functions for model surgery.
+- **quantize.py:** For quantizing and dequantizing models.
 
 Also check out my other repo [CoreMLHelpers](https://github.com/hollance/CoreMLHelpers) for a collection of helper code that makes it a little easier to work with Core ML in Swift.
