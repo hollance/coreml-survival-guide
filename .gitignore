@@ -1,3 +1,9 @@
+# Temporary/downloaded files used by the SSDLite scripts.
+ssdlite_mobilenet_v2_coco_2018_05_09
+frozen_model.pb
+Decoder.mlmodel
+NMS.mlmodel
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

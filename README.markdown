@@ -16,6 +16,8 @@ Included in this source code repo is the following:
 
 **CheckInputImage:** Demo app for iOS that shows how to use a very basic image-to-image model to verify how Vision and the neural network preprocessing options modify the input image.
 
+**MobileNetV2+SSDLite:** Conversion script and demo app for the SSDLite object detection model. (The original model is not included, you'll need to download this first. See the link in **ssdlite.py**.)
+
 **NeuralNetworkBuilder:** Demo of how to write your own Core ML converter. Includes the trained Caffe model.
 
 Scripts:
