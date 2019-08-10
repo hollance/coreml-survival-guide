@@ -76,6 +76,8 @@ class ViewController: UIViewController {
         imageCropAndScaleOption = .scaleFill
       case .scaleFill:
         imageCropAndScaleOption = .centerCrop
+      @unknown default:
+        fatalError("eek!")
     }
 
     updateCropScaleButton()
@@ -92,6 +94,8 @@ class ViewController: UIViewController {
         cropScaleOptionButton.title = "scaleFit"
       case .scaleFill:
         cropScaleOptionButton.title = "scaleFill"
+      @unknown default:
+        fatalError("eek!")
     }
   }
 }
@@ -108,7 +112,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 extension CGImagePropertyOrientation {
   init(_ orientation: UIImage.Orientation) {
     switch orientation {
-    case .up: self = .up
     case .upMirrored: self = .upMirrored
     case .down: self = .down
     case .downMirrored: self = .downMirrored
@@ -116,6 +119,7 @@ extension CGImagePropertyOrientation {
     case .leftMirrored: self = .leftMirrored
     case .right: self = .right
     case .rightMirrored: self = .rightMirrored
+    default: self = .up
     }
   }
 }

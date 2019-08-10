@@ -6,13 +6,13 @@ f = h5py.File(caffemodel_path, "r")
 
 
 def get_weights(layer_name):
-    weights = f[layer_name + "/0"].value
+    weights = f[layer_name + "/0"][...]
     
     # Transpose the weights for a convolutional layer.
     if weights.ndim == 4:
         weights = weights.transpose(2, 3, 1, 0)
 
-    biases = f[layer_name + "/1"].value
+    biases = f[layer_name + "/1"][...]
     return weights, biases
 
 
