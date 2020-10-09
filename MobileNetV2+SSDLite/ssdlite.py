@@ -34,7 +34,7 @@ from tensorflow.python.framework import dtypes
 from tensorflow.python.platform import gfile
 
 import tfcoreml
-import coremltools
+import coremltools as ct
 
 
 # From where to load the saved_model.pb file.
@@ -142,10 +142,10 @@ spec.description.output[0].type.multiArrayType.shape.append(num_anchors)
 del spec.description.output[1].type.multiArrayType.shape[-1]
 
 # Convert weights to 16-bit floats to make the model smaller.
-spec = coremltools.utils.convert_neural_network_spec_weights_to_fp16(spec)
+spec = ct.utils.convert_neural_network_spec_weights_to_fp16(spec)
 
 # Create a new MLModel from the modified spec and save it.
-ssd_model = coremltools.models.MLModel(spec)
+ssd_model = ct.models.MLModel(spec)
 ssd_model.save(coreml_model_path)
 
 
@@ -322,7 +322,7 @@ builder.add_permute(name="permute_output",
                     input_name="concat_output",
                     output_name="raw_coordinates")
 
-decoder_model = coremltools.models.MLModel(builder.spec)
+decoder_model = ct.models.MLModel(builder.spec)
 decoder_model.save("Decoder.mlmodel")
 
 
@@ -330,7 +330,7 @@ decoder_model.save("Decoder.mlmodel")
 # PART 3: Non-maximum suppression
 # ===============================
 
-nms_spec = coremltools.proto.Model_pb2.Model()
+nms_spec = ct.proto.Model_pb2.Model()
 nms_spec.specificationVersion = 3
 
 for i in range(2):
@@ -374,7 +374,7 @@ nms.pickTop.perClass = True
 labels = np.loadtxt("coco_labels.txt", dtype=str, delimiter="\n")
 nms.stringClassLabels.vector.extend(labels)
 
-nms_model = coremltools.models.MLModel(nms_spec)
+nms_model = ct.models.MLModel(nms_spec)
 nms_model.save("NMS.mlmodel")
 
 
@@ -435,7 +435,7 @@ pipeline.spec.description.metadata.userDefined.update(user_defined_metadata)
 # operating system version!
 pipeline.spec.specificationVersion = 3
 
-final_model = coremltools.models.MLModel(pipeline.spec)
+final_model = ct.models.MLModel(pipeline.spec)
 final_model.save(coreml_model_path)
 
 print(final_model)

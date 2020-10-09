@@ -1,7 +1,7 @@
-import coremltools
+import coremltools as ct
 import coremltools.proto.FeatureTypes_pb2 as ft
 
-spec = coremltools.proto.Model_pb2.Model()
+spec = ct.proto.Model_pb2.Model()
 spec.specificationVersion = 1
 
 new_input = spec.description.input.add()
@@ -35,4 +35,4 @@ new_layer.activation.linear.alpha = 1.0
 
 print(spec.description)
 
-coremltools.utils.save_spec(spec, "Image2Image.mlmodel")
+ct.utils.save_spec(spec, "Image2Image.mlmodel")

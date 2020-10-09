@@ -1,7 +1,7 @@
 # This is the source code from the chapter "Cleaning Up a Converted Model".
 
 import tfcoreml
-import coremltools
+import coremltools as ct
 from helpers import get_nn
 
 
@@ -95,7 +95,7 @@ del nn.layers[find_layer_index("sub_7:0")]
 
 new_layer = nn.layers.add()
 new_layer.name = "argmax"
-params = coremltools.proto.NeuralNetwork_pb2.ReduceLayerParams
+params = ct.proto.NeuralNetwork_pb2.ReduceLayerParams
 new_layer.reduce.mode = params.ARGMAX
 new_layer.reduce.axis = params.C
 
@@ -106,9 +106,9 @@ new_layer.input.append(nn.layers[-2].output[0])
 # Fix up the output shape and make it INT32.
 
 del spec.description.output[0].type.multiArrayType.shape[0]
-spec.description.output[0].type.multiArrayType.dataType = coremltools.proto.FeatureTypes_pb2.ArrayFeatureType.INT32
+spec.description.output[0].type.multiArrayType.dataType = ct.proto.FeatureTypes_pb2.ArrayFeatureType.INT32
 
 # Convert weights to 16 bit floats and save the model.
 
-spec = coremltools.utils.convert_neural_network_spec_weights_to_fp16(spec)
-coremltools.models.utils.save_spec(spec, "DeepLabClean.mlmodel")
+spec = ct.utils.convert_neural_network_spec_weights_to_fp16(spec)
+ct.models.utils.save_spec(spec, "DeepLabClean.mlmodel")

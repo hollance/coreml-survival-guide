@@ -16,7 +16,7 @@ def get_weights(layer_name):
     return weights, biases
 
 
-import coremltools
+import coremltools as ct
 from coremltools.models import datatypes
 from coremltools.models import neural_network
 
@@ -189,7 +189,7 @@ mean_image = np.array(mean_image.data)
 builder.spec.neuralNetworkClassifier.preprocessing[0].meanImage.meanImage.extend(mean_image)
 
 
-mlmodel = coremltools.models.MLModel(builder.spec)
+mlmodel = ct.models.MLModel(builder.spec)
 
 mlmodel.short_description = "cifar10_quick"
 mlmodel.author = "https://github.com/BVLC/caffe/tree/master/examples/cifar10"

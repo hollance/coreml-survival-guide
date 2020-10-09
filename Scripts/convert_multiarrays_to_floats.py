@@ -1,4 +1,5 @@
-import sys, coremltools
+import sys
+import coremltools as ct
 import coremltools.proto.FeatureTypes_pb2 as ft
 
 def update_multiarray_to_float32(feature):
@@ -12,7 +13,7 @@ if len(sys.argv) != 3:
 input_model_path = sys.argv[1]
 output_model_path = sys.argv[2]
 
-spec = coremltools.utils.load_spec(input_model_path)
+spec = ct.utils.load_spec(input_model_path)
 
 for feature in spec.description.input:
     update_multiarray_to_float32(feature)
@@ -20,4 +21,4 @@ for feature in spec.description.input:
 for feature in spec.description.output:
     update_multiarray_to_float32(feature)
 
-coremltools.utils.save_spec(spec, output_model_path)
+ct.utils.save_spec(spec, output_model_path)

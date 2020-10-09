@@ -1,10 +1,10 @@
 # Core ML Survival Guide
 
-This is the source code for the book [Core ML Survival Guide](http://leanpub.com/coreml-survival-guide) -- now updated for Core ML 3.
+This is the source code for the book [Core ML Survival Guide](http://leanpub.com/coreml-survival-guide) -- now updated for iOS 14 and macOS 11.0.
 
 ## The book
 
-If you don't have the book yet, here's my sales pitch: The [Core ML Survival Guide](http://leanpub.com/coreml-survival-guide) is more than 80 chapters and 400+ pages of Core ML tips and tricks. 
+If you don't have the book yet, here's my sales pitch: The [Core ML Survival Guide](http://leanpub.com/coreml-survival-guide) is more than 80 chapters and almost 500 pages of Core ML tips and tricks. 
 
 Learn the best ways to convert your models to Core ML, how the mlmodel file format works, how to perform model surgery to fix issues with your mlmodel files, how use `MLMultiArray`, and much more!
 
